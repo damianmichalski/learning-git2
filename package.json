@@ -14,13 +14,13 @@
     "build:clean": "rm -rf css/*.css",
     "build:sass": "node-sass --output-style compact -o css sass",
     "build:autoprefixer": "autoprefixer-cli css/style.css",
-    "build-dev:sass": "node-sass --output-style expanded --source-map true -o css sass",
     "build-dev:sassprefixer": "npm-run-all build-dev:sass build:autoprefixer",
+    "build-dev:sass": "node-sass --output-style expanded --source-map true -o css sass",
     "watch": "npm-run-all build -p watch:browsersync watch:sassprefixer",
     "watch:browsersync": "browser-sync start --server --watch --files css/*.css *.html",
     "watch:sass": "node-sass --output-style expanded --source-map true -o css sass --watch",
     "watch:autoprefixer": "onchange -d 100 css/style.css -- autoprefixer-cli -o css/style.css",
-    "watch:sassprefixer": "onchange -d 100 sass/style.scss -- build-dev:sassprefixer"
+    "watch:sassprefixer": "onchange -d 100 sass/style.scss -- npm-run-all build-dev:sassprefixer"
   },
   "keywords": [],
   "author": "",
